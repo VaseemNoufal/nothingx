@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XP Leaderboard System - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo">XP Leaderboard</a>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Public View</a>
+                <span class="nav-divider">|</span>
+                <a href="admin.html" class="nav-link">Admin Panel</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="app">
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="section">
+            <nav class="dashboard-nav">
+                <button class="nav-btn active" data-view="teams">Teams</button>
+                <button class="nav-btn" data-view="members">Members</button>
+                <button class="nav-btn" data-view="xp-submission">XP Submission</button>
+                <button class="nav-btn" data-view="leaderboard">Leaderboard</button>
+                <button id="logout-btn" class="btn btn-secondary">Logout</button>
+            </nav>
+
+            <!-- Teams View -->
+            <div id="teams-view" class="view active">
+                <h2>Manage Teams</h2>
+                <form id="create-team-form">
+                    <div class="form-group">
+                        <label for="team-name">Team Name</label>
+                        <input type="text" id="team-name" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Team</button>
+                </form>
+                <div id="teams-list" class="list-container"></div>
+            </div>
+
+            <!-- Members View -->
+            <div id="members-view" class="view">
+                <h2>Manage Members</h2>
+                <form id="create-member-form">
+                    <div class="form-group">
+                        <label for="member-name">Member Name</label>
+                        <input type="text" id="member-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="member-team">Team</label>
+                        <select id="member-team" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="member-role">Role</label>
+                        <select id="member-role" required>
+                            <option value="member">Member</option>
+                            <option value="team_lead">Team Lead</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Member</button>
+                </form>
+                <div id="members-list" class="list-container"></div>
+            </div>
+
+            <!-- XP Submission View -->
+            <div id="xp-submission-view" class="view">
+                <h2>Submit Weekly XP</h2>
+                <form id="xp-submission-form">
+                    <div class="form-group">
+                        <label for="xp-member">Member</label>
+                        <select id="xp-member" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="week-start">Week Start</label>
+                        <input type="date" id="week-start" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="week-end">Week End</label>
+                        <input type="date" id="week-end" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="xp-amount">XP Earned</label>
+                        <input type="number" id="xp-amount" min="0" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit XP</button>
+                </form>
+            </div>
+
+            <!-- Leaderboard View -->
+            <div id="leaderboard-view" class="view">
+                <h2>Leaderboards</h2>
+                <div class="leaderboard-controls">
+                    <div class="form-group">
+                        <label for="leaderboard-type">View Type</label>
+                        <select id="leaderboard-type">
+                            <option value="weekly">Weekly</option>
+                            <option value="overall">Overall</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderboard-level">Level</label>
+                        <select id="leaderboard-level">
+                            <option value="team">Team</option>
+                            <option value="individual">Individual</option>
+                        </select>
+                    </div>
+                    <div id="date-range-controls" class="form-group">
+                        <label for="week-start-leaderboard">Week Start</label>
+                        <input type="date" id="week-start-leaderboard">
+                        <label for="week-end-leaderboard">Week End</label>
+                        <input type="date" id="week-end-leaderboard">
+                    </div>
+                </div>
+                <div id="leaderboard-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Supabase first -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Then load our config -->
+    <script src="js/config.js"></script>
+    
+    <!-- Then load our application modules -->
+    <script src="js/auth.js"></script>
+    <script src="js/teams.js"></script>
+    <script src="js/members.js"></script>
+    <script src="js/xp.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 

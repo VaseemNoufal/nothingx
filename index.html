@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XP Leaderboard System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo">XP Leaderboard</a>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <span class="nav-divider">|</span>
+                <a href="admin.html" class="nav-link">Admin Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="public-content">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Team XP Leaderboard</h1>
+                <p>Track and celebrate team achievements and individual contributions</p>
+            </div>
+        </section>
+
+        <section class="leaderboard-section">
+            <div class="section-header">
+                <h2>Leaderboards</h2>
+                <div class="leaderboard-controls">
+                    <div class="form-group">
+                        <label for="leaderboard-type">View Type</label>
+                        <select id="leaderboard-type">
+                            <option value="weekly">Weekly</option>
+                            <option value="overall">Overall</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderboard-level">Level</label>
+                        <select id="leaderboard-level">
+                            <option value="team">Team</option>
+                            <option value="individual">Individual</option>
+                        </select>
+                    </div>
+                    <div id="date-range-controls" class="form-group">
+                        <label for="week-start-leaderboard">Week Start</label>
+                        <input type="date" id="week-start-leaderboard">
+                        <label for="week-end-leaderboard">Week End</label>
+                        <input type="date" id="week-end-leaderboard">
+                    </div>
+                </div>
+            </div>
+            <div id="leaderboard-container" class="leaderboard-grid"></div>
+        </section>
+
+        <section class="teams-section">
+            <h2>Our Teams</h2>
+            <div id="teams-grid" class="teams-grid"></div>
+        </section>
+
+        <section class="members-section">
+            <h2>Team Members</h2>
+            <div id="members-grid" class="members-grid"></div>
+        </section>
+    </main>
+
+    <!-- Load Supabase first -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Then load our config -->
+    <script src="js/config.js"></script>
+    
+    <!-- Load public view modules -->
+    <script src="js/public.js"></script>
+</body>
+</html> 
