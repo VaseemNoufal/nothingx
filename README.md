@@ -6,11 +6,30 @@ A web application for tracking and displaying team and individual XP (experience
 
 - Team management (create, view, delete teams)
 - Member management (add, view, delete team members)
+- **Batch XP Submission** - Submit XP for multiple team members at once
 - Weekly XP submissions for team members
 - Leaderboards:
   - Weekly and overall rankings
   - Team-level and individual-level views
 - Secure authentication for admin access
+
+## New Batch XP Submission Feature
+
+The new batch XP submission system allows team leads to efficiently submit XP for multiple team members at once:
+
+### Key Features:
+- **Date Picker**: Select a start date, end date is automatically calculated (7 days)
+- **Team-Based UI**: All teams are displayed in collapsible dropdowns
+- **Inline XP Inputs**: Each member has a dedicated input box for XP entry
+- **Single Submit**: One button submits all XP data in batch
+- **Real-time Feedback**: Status messages show submission progress and results
+
+### How to Use:
+1. Navigate to "XP Submission" in the admin dashboard
+2. Select the week start date (end date auto-calculates)
+3. Expand team dropdowns to see members
+4. Enter XP values for each member
+5. Click "Submit All XP" to submit everything at once
 
 ## Setup Instructions
 
@@ -44,7 +63,8 @@ A web application for tracking and displaying team and individual XP (experience
 │   ├── auth.js         # Authentication handling
 │   ├── teams.js        # Team management
 │   ├── members.js      # Member management
-│   ├── xp.js           # XP submission handling
+│   ├── xp.js           # XP submission handling (legacy)
+│   ├── batch-xp.js     # Batch XP submission handling
 │   ├── leaderboard.js  # Leaderboard functionality
 │   └── app.js          # Main application logic
 └── supabase/

@@ -29,6 +29,11 @@ class App {
             teams.loadTeams();
         } else if (viewName === 'members') {
             members.loadMembers();
+        } else if (viewName === 'xp-submission') {
+            // Refresh teams and members for batch XP submission
+            if (window.batchXP) {
+                batchXP.loadTeamsAndMembers();
+            }
         } else if (viewName === 'leaderboard') {
             leaderboard.updateLeaderboard();
         }

@@ -1,12 +1,17 @@
 class XP {
     constructor() {
+        // Check if the old form exists (for backward compatibility)
         this.xpSubmissionForm = document.getElementById('xp-submission-form');
-
-        this.init();
+        
+        if (this.xpSubmissionForm) {
+            this.init();
+        }
     }
 
     init() {
-        this.xpSubmissionForm.addEventListener('submit', (e) => this.handleXPSubmission(e));
+        if (this.xpSubmissionForm) {
+            this.xpSubmissionForm.addEventListener('submit', (e) => this.handleXPSubmission(e));
+        }
     }
 
     async handleXPSubmission(e) {
