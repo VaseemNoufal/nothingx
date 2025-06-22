@@ -1,7 +1,6 @@
 class Auth {
     constructor() {
         this.loginForm = document.getElementById('login');
-        this.signupForm = document.getElementById('signup');
         this.logoutBtn = document.getElementById('logout-btn');
         this.authSection = document.getElementById('auth-section');
         this.dashboardSection = document.getElementById('dashboard-section');
@@ -21,18 +20,9 @@ class Auth {
         if (this.loginForm) {
             this.loginForm.addEventListener('submit', (e) => this.handleLogin(e));
         }
-        if (this.signupForm) {
-            this.signupForm.addEventListener('submit', (e) => this.handleSignup(e));
-        }
         if (this.logoutBtn) {
             this.logoutBtn.addEventListener('click', () => this.handleLogout());
         }
-
-        // Add tab switching
-        const tabs = document.querySelectorAll('.auth-tab');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => this.switchTab(tab.dataset.tab));
-        });
     }
 
     async checkSession(isAdminDashboard, isAdminLogin) {
@@ -73,32 +63,6 @@ class Auth {
         }
     }
 
-    async handleSignup(e) {
-        e.preventDefault();
-        const email = document.getElementById('signup-email').value;
-        const password = document.getElementById('signup-password').value;
-        const confirmPassword = document.getElementById('signup-confirm-password').value;
-
-        if (password !== confirmPassword) {
-            alert('Passwords do not match!');
-            return;
-        }
-
-        try {
-            const { data, error } = await supabase.auth.signUp({
-                email,
-                password
-            });
-
-            if (error) throw error;
-
-            alert('Signup successful! Please check your email for verification.');
-            this.switchTab('login');
-        } catch (error) {
-            alert(error.message);
-        }
-    }
-
     async handleLogout() {
         try {
             const { error } = await supabase.auth.signOut();
@@ -109,18 +73,6 @@ class Auth {
         } catch (error) {
             alert(error.message);
         }
-    }
-
-    switchTab(tabName) {
-        // Update active tab
-        document.querySelectorAll('.auth-tab').forEach(tab => {
-            tab.classList.toggle('active', tab.dataset.tab === tabName);
-        });
-
-        // Show active form
-        document.querySelectorAll('.auth-form').forEach(form => {
-            form.classList.toggle('active', form.id === `${tabName}-form`);
-        });
     }
 }
 
